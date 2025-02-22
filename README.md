@@ -21,7 +21,7 @@ pip3 install selenium
 pip3 install dotenv
 ```
 
-Crie o arquivo .ev
+Crie o arquivo .env
 
 ```bash
 ECOS_USUARIO=
