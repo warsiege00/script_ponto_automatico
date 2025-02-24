@@ -8,6 +8,14 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
+# Verificar se hoje é um dia útil (segunda a sexta-feira)
+hoje = datetime.today()
+print(f"Data atual: {hoje.strftime('%d/%m/%Y %H:%M:%S')}")
+
+if hoje.weekday() >= 5:  # 5 = sábado, 6 = domingo
+    print("Hoje é fim de semana. O script não será executado.")
+    exit()
+
 # Carregar variáveis de ambiente do arquivo .env
 print("Carregando variáveis de ambiente...")
 load_dotenv()
@@ -19,14 +27,6 @@ SVC_NOW_REGISTRO_FORM_URL = os.getenv("SVC_NOW_REGISTRO_FORM_URL")
 
 if not SVC_NOW_USUARIO or not SVC_NOW_SENHA:
     print("Erro: Usuário ou senha não definidos no arquivo .env")
-    exit()
-
-# Verificar se hoje é um dia útil (segunda a sexta-feira)
-hoje = datetime.today()
-print(f"Data atual: {hoje.strftime('%d/%m/%Y %H:%M:%S')}")
-
-if hoje.weekday() >= 5:  # 5 = sábado, 6 = domingo
-    print("Hoje é fim de semana. O script não será executado.")
     exit()
 
 # Configurar o WebDriver

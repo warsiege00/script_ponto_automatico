@@ -8,18 +8,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
-# Carregar variáveis de ambiente do arquivo .env
-print("Carregando variáveis de ambiente...")
-load_dotenv()
-
-USUARIO = os.getenv("ECOS_USUARIO")
-SENHA = os.getenv("ECOS_SENHA")
-ECOS_LOGIN_URL = os.getenv("ECOS_AUTH_URL")
-ECOS_REGISTRO_FORM_URL = os.getenv("ECOS_REGISTRO_FORM_URL")
-
-if not USUARIO or not SENHA or not ECOS_LOGIN_URL or not ECOS_REGISTRO_FORM_URL:
-    print("Erro: Alguma variável de ambiente não foi definida corretamente.")
-    exit()
 
 # Verificar se hoje é um dia útil (segunda a sexta-feira)
 hoje = datetime.today()
@@ -28,6 +16,21 @@ print(f"Data atual: {hoje.strftime('%d/%m/%Y %H:%M:%S')}")
 if hoje.weekday() >= 5:
     print("Hoje é fim de semana. O script não será executado.")
     exit()
+
+# Carregar variáveis de ambiente do arquivo .env
+print("Carregando variáveis de ambiente...")
+load_dotenv()
+
+USUARIO = os.getenv("ECOS_USUARIO")
+SENHA = os.getenv("ECOS_SENHA")
+ECOS_LOGIN_URL = os.getenv("ECOS_LOGIN_URL")
+ECOS_REGISTRO_FORM_URL = os.getenv("ECOS_REGISTRO_FORM_URL")
+
+if not USUARIO or not SENHA or not ECOS_LOGIN_URL or not ECOS_REGISTRO_FORM_URL:
+    print("Erro: Alguma variável de ambiente não foi definida corretamente.")
+    exit()
+
+
 
 # Configurar o WebDriver
 print("Iniciando WebDriver...")
