@@ -86,4 +86,5 @@ except Exception as e:
 
 finally:
     print("Finalizando WebDriver...")
+    print("-----------------------------------------")
     driver.quit()

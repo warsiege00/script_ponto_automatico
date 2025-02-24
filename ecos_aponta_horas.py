@@ -30,8 +30,6 @@ if not USUARIO or not SENHA or not ECOS_LOGIN_URL or not ECOS_REGISTRO_FORM_URL:
     print("Erro: Alguma variável de ambiente não foi definida corretamente.")
     exit()
 
-
-
 # Configurar o WebDriver
 print("Iniciando WebDriver...")
 options = webdriver.ChromeOptions()
@@ -71,7 +69,7 @@ try:
     data_hoje = hoje.strftime("%d/%m/%Y")
     print(f"Procurando pela data: {data_hoje}")
 
-    linhas = driver.find_elements(By.XPATH, "//table[@id='tabelaAcertoDoPonto']/tbody/tr")
+    linhas = driver.find_elements(By.XPATH, "//table[@id='tabelaAcertoDoPonto']/tbody/tr[@role='row']")
     print(f"Linhas encontradas na tabela: {len(linhas)}")
 
     botao_marcacao = None
@@ -128,4 +126,5 @@ except Exception as e:
 
 finally:
     print("Finalizando WebDriver...")
+    print("-----------------------------------------")
     driver.quit()
