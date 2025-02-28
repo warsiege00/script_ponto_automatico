@@ -36,7 +36,7 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless")  # Rodar sem abrir a janela do navegador
 driver = webdriver.Chrome(options=options)
 
-def esperar_elemento(by, valor, timeout=10):
+def esperar_elemento(by, valor, timeout=20):
     try:
         return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, valor)))
     except Exception as e:
