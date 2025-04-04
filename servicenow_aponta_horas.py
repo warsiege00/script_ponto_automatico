@@ -39,7 +39,7 @@ try:
     # Acessar o site
     print("Acessando o site de login...")
     driver.get(SVC_NOW_LOGIN_URL)
-    time.sleep(3)
+    time.sleep(10)
 
     # Fazer login
     print("Tentando localizar campos de login...")
@@ -50,12 +50,12 @@ try:
     username.send_keys(SVC_NOW_USUARIO)
     password.send_keys(SVC_NOW_SENHA)
     password.send_keys(Keys.RETURN)
-    time.sleep(3)
+    time.sleep(10)
 
     # Navegar até o formulário
     print("Acessando a página de registro de atividades...")
     driver.get(SVC_NOW_REGISTRO_FORM_URL)
-    time.sleep(3)
+    time.sleep(10)
 
     # Pegar a data de hoje no formato dd/mm/yyyy
     data_hoje = hoje.strftime("%d/%m/%Y")
@@ -65,13 +65,13 @@ try:
     input_hora = driver.find_element(By.ID, "dur-hours-u_teste")
     input_minutos = driver.find_element(By.ID, "dur-minutes-u_teste")
     input_text = driver.find_element(By.ID, "sp_formfield_u_descricao")
-    time.sleep(3)
+    time.sleep(10)
 
     print("Preenchendo os campos do formulário...")
     input_hora.send_keys("8")
     input_minutos.send_keys("48")
     input_text.send_keys("Atendimento de demandas do marketing")
-    time.sleep(3)
+    time.sleep(10)
 
     print("Tentando localizar e clicar no botão de envio...")
     botao_submit = driver.find_element(By.NAME, "submit")
@@ -79,7 +79,7 @@ try:
 
     print("Formulário enviado com sucesso!")
 
-    time.sleep(5)
+    time.sleep(10)
 
 except Exception as e:
     print("Erro durante a execução do script:", e)

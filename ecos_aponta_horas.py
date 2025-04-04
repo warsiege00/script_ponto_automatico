@@ -35,6 +35,7 @@ print("Iniciando WebDriver...")
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")  # Rodar sem abrir a janela do navegador
 driver = webdriver.Chrome(options=options)
+time.sleep(10)
 
 def esperar_elemento(by, valor, timeout=20):
     try:
@@ -46,7 +47,7 @@ def esperar_elemento(by, valor, timeout=20):
 try:
     print("Acessando o site de login...")
     driver.get(ECOS_LOGIN_URL)
-    time.sleep(3)
+    time.sleep(10)
 
     print("Tentando localizar campos de login...")
     username = esperar_elemento(By.ID, "usuario")
@@ -57,14 +58,14 @@ try:
         username.send_keys(USUARIO)
         password.send_keys(SENHA)
         password.send_keys(Keys.RETURN)
-        time.sleep(3)
+        time.sleep(10)
     else:
         print("Erro: Campos de login não encontrados.")
         exit()
 
     print("Acessando a página de registro de atividades...")
     driver.get(ECOS_REGISTRO_FORM_URL)
-    time.sleep(3)
+    time.sleep(10)
 
     data_hoje = hoje.strftime("%d/%m/%Y")
     print(f"Procurando pela data: {data_hoje}")
@@ -90,7 +91,7 @@ try:
     if botao_marcacao:
         print("Clicando no botão de marcação...")
         botao_marcacao.click()
-        time.sleep(3)
+        time.sleep(10)
 
         botao_adicionar = esperar_elemento(By.ID, "btnAdicionar")
         
@@ -98,7 +99,7 @@ try:
             print("Clicando no botão adicionar...")
             for i, hora in enumerate(["08:00", "12:00", "13:00", "17:45"]):
                 botao_adicionar.click()
-                time.sleep(2)
+                time.sleep(10)
                 input_hora = esperar_elemento(By.NAME, f"Marcacoes[{i}].NameHoraMascarada")
                 if input_hora:
                     print(f"Inserindo horário {hora}...")
@@ -119,7 +120,7 @@ try:
     else:
         print("Nenhuma linha correspondente à data de hoje foi encontrada ou o botão não está disponível.")
 
-    time.sleep(5)
+    time.sleep(10)
 
 except Exception as e:
     print("Erro durante a execução do script:", e)
